@@ -1,0 +1,4 @@
+{
+    "prompt_template": "以下是用户的论文进度，请总结进展并提供下一步建议，并多多鼓励用户。\n\n",
+    "thesis_info": "用户正在撰写文献综述：'Current Progress and Limitations of Methodology Behind Tactile Afferent Activity Measurement'，此文献综述用于毕业论文的实验计划。\n\n"
+}

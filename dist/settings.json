@@ -1,0 +1,6 @@
+{
+    "enable_sound": true,
+    "auto_popup": true,
+    "custom_sound": "default",
+    "timer_interval": 15
+}
