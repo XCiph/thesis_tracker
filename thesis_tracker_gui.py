@@ -1,10 +1,10 @@
-import openai
 import time
 import json
 import threading
 import tkinter as tk
 from tkinter import scrolledtext, messagebox
-import winsound  # 用于 Windows 播放铃声
+import sys
+import subprocess
 import api_handler  # 导入 API 处理模块
 
 
@@ -51,10 +51,17 @@ def save_progress(progress):
 # 播放提醒铃声
 def play_sound():
     if settings["enable_sound"]:
-        if settings["custom_sound"] == "default":
-            winsound.Beep(1000, 500)  # 默认音效
-        else:
-            winsound.PlaySound(settings["custom_sound"], winsound.SND_FILENAME)
+        if sys.platform == "win32":
+            if settings["custom_sound"] == "default":
+                import winsound
+                winsound.Beep(1000, 500)  # 默认音效
+            else:
+                winsound.PlaySound(settings["custom_sound"], winsound.SND_FILENAME)
+        elif sys.platform == "darwin":  # MacOS
+            if settings["custom_sound"] == "default":
+                subprocess.call(["afplay", "/System/Library/Sounds/Glass.aiff"])  # Mac 默认声音
+            else:
+                subprocess.call(["afplay", settings["custom_sound"]])  # 播放用户自定义音频
 
 # 倒计时函数
 def countdown():
